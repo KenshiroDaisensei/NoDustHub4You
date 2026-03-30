@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สิ่งที่จะทำในอนาคต — ระบบห้องปลอดฝุ่น</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Sarabun', 'Noto Sans Thai', sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.8;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            padding: 40px 50px;
+        }
+        h1 {
+            text-align: center;
+            color: #e65100;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.05em;
+        }
+        .note {
+            background: #fff3e0;
+            border-left: 4px solid #f57c00;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            color: #555;
+        }
+        .todo-item {
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        .todo-header {
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .todo-number {
+            background: #e65100;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 4px 12px;
+            border-radius: 6px;
+            min-width: 30px;
+            text-align: center;
+        }
+        .todo-title {
+            font-weight: 600;
+            color: #333;
+            font-size: 1.05em;
+        }
+        .badge {
+            margin-left: auto;
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+        .badge-future {
+            background: #fff3e0;
+            color: #e65100;
+        }
+        .todo-body {
+            padding: 14px 20px;
+            color: #555;
+            font-size: 0.95em;
+        }
+        @media (max-width: 600px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.5em; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>สิ่งที่จะทำในอนาคต</h1>
+        <p class="subtitle">ระบบค้นหาห้องปลอดฝุ่น (Clean Room Finder)</p>
+
+        <div class="note">
+            รายการด้านล่างนี้เป็นฟีเจอร์ที่วางแผนจะทำในอนาคต ยังไม่ได้อยู่ใน scope ปัจจุบัน สามารถเพิ่มเติมหรือปรับเปลี่ยนได้ตามความเหมาะสม
+        </div>
+
+        <div class="todo-item">
+            <div class="todo-header">
+                <span class="todo-number">1</span>
+                <span class="todo-title">LINE Login</span>
+                <span class="badge badge-future">อนาคต</span>
+            </div>
+            <div class="todo-body">
+                เพิ่มระบบ login ผ่าน LINE เพื่อให้ผู้ใช้เข้าสู่ระบบได้สะดวกขึ้น
+            </div>
+        </div>
+
+        <div class="todo-item">
+            <div class="todo-header">
+                <span class="todo-number">2</span>
+                <span class="todo-title">ระบบ Login (เว็บ)</span>
+                <span class="badge badge-future">อนาคต</span>
+            </div>
+            <div class="todo-body">
+                ระบบสมัครสมาชิก/เข้าสู่ระบบผ่านเว็บ (email/เบอร์โทร) เพื่อรองรับฟีเจอร์รีวิว ถ่ายรูป และเพิ่มจุดห้องปลอดฝุ่น
+            </div>
+        </div>
+
+        <div class="todo-item">
+            <div class="todo-header">
+                <span class="todo-number">3</span>
+                <span class="todo-title">ระบบรีวิว / ถ่ายรูป / เพิ่มจุด</span>
+                <span class="badge badge-future">อนาคต</span>
+            </div>
+            <div class="todo-body">
+                ให้ผู้ใช้ที่ login แล้วสามารถรีวิว ถ่ายรูป และเพิ่มจุดห้องปลอดฝุ่นใหม่ได้ (ต้องมีระบบ Login ก่อน)
+            </div>
+        </div>
+
+        <div class="todo-item">
+            <div class="todo-header">
+                <span class="todo-number">4</span>
+                <span class="todo-title">LINE OA + LIFF</span>
+                <span class="badge badge-future">อนาคต</span>
+            </div>
+            <div class="todo-body">
+                สร้าง LINE Official Account พร้อม LIFF app เพื่อให้ผู้ใช้เปิดระบบผ่าน LINE ได้โดยตรง รวมถึงแจ้งเตือนค่าฝุ่นสูง ค้นหาห้องปลอดฝุ่นผ่าน LINE และแชร์ให้เพื่อน
+            </div>
+        </div>
+
+        <div class="todo-item">
+            <div class="todo-header">
+                <span class="todo-number">5</span>
+                <span class="todo-title">ระบบเพิ่มจุดห้องปลอดฝุ่น (ร้านกาแฟ/สถานที่)</span>
+                <span class="badge badge-future">อนาคต</span>
+            </div>
+            <div class="todo-body">
+                ให้เจ้าของสถานที่หรือคนทั่วไปส่งฟอร์มเพิ่มจุดห้องปลอดฝุ่นใหม่บนแผนที่ได้ (ต้องมีระบบ Login ก่อน)
+            </div>
+        </div>
+
+        <div class="todo-item">
+            <div class="todo-header">
+                <span class="todo-number">6</span>
+                <span class="todo-title">แสดงค่าฝุ่น PM2.5 real-time</span>
+                <span class="badge badge-future">อนาคต</span>
+            </div>
+            <div class="todo-body">
+                เชื่อมต่อ DustBoy / Air4Thai เพื่อแสดงค่าฝุ่น PM2.5 ปัจจุบันในพื้นที่บนแผนที่
+            </div>
+        </div>
+
+        <div class="todo-item">
+            <div class="todo-header">
+                <span class="todo-number">7</span>
+                <span class="todo-title">Admin Dashboard</span>
+                <span class="badge badge-future">อนาคต</span>
+            </div>
+            <div class="todo-body">
+                หน้า Admin สำหรับจัดการข้อมูลห้องปลอดฝุ่น อนุมัติจุดใหม่ จัดการรีวิว ดูสถิติ และจัดการผู้ใช้
+            </div>
+        </div>
+
+        <div class="todo-item">
+            <div class="todo-header">
+                <span class="todo-number">8</span>
+                <span class="todo-title">ภาษาอังกฤษ (i18n)</span>
+                <span class="badge badge-future">อนาคต</span>
+            </div>
+            <div class="todo-body">
+                เพิ่มภาษาอังกฤษสำหรับนักท่องเที่ยว (ออกแบบรองรับ multi-language ตั้งแต่ต้น)
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

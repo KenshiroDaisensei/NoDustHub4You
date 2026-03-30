@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คำถามก่อนออกแบบ — ระบบห้องปลอดฝุ่น</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Sarabun', 'Noto Sans Thai', sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.8;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            padding: 40px 50px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #046738;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.05em;
+        }
+
+        .summary-box {
+            background: #e8f5e9;
+            border-left: 4px solid #046738;
+            padding: 20px 25px;
+            border-radius: 8px;
+            margin-bottom: 35px;
+        }
+
+        .summary-box h2 {
+            color: #046738;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .summary-box ol {
+            padding-left: 20px;
+        }
+
+        .summary-box li {
+            margin-bottom: 5px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: #046738;
+            color: #fff;
+            padding: 14px 25px;
+            font-size: 1.15em;
+            font-weight: bold;
+        }
+
+        .section-body {
+            padding: 20px 25px;
+        }
+
+        .question {
+            margin-bottom: 18px;
+            padding-bottom: 18px;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+
+        .question:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .question-label {
+            font-weight: bold;
+            color: #046738;
+            margin-bottom: 6px;
+        }
+
+        .question-text {
+            margin-bottom: 8px;
+        }
+
+        .options {
+            padding-left: 25px;
+            color: #555;
+        }
+
+        .options li {
+            margin-bottom: 3px;
+        }
+
+
+        .footer-note {
+            margin-top: 35px;
+            padding: 20px 25px;
+            background: #fff3e0;
+            border-left: 4px solid #f57c00;
+            border-radius: 8px;
+            font-size: 1.05em;
+            color: #555;
+        }
+
+        @media print {
+            body {
+                background: #fff;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+
+            .answer-box {
+                border: 1px solid #999;
+                min-height: 80px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>คำถามก่อนออกแบบ</h1>
+        <p class="subtitle">ระบบค้นหาห้องปลอดฝุ่น (Clean Room Finder)</p>
+
+        <div class="summary-box">
+            <h2>สรุปสิ่งที่ต้องการ (เบื้องต้น)</h2>
+            <ol>
+                <li>คนทั่วไปเปิดเข้ามา &rarr; เห็นแผนที่ &rarr; หาห้องปลอดฝุ่นใกล้ตัวได้ทันที</li>
+                <li>ข้อมูลมาจาก 2 แหล่ง: กรมอนามัย + คนเพิ่มเอง (ร้านกาแฟ สถานที่ต่างๆ)</li>
+                <li>คนไปใช้จริง &rarr; ถ่ายรูป แชร์พิกัด เขียนรีวิวได้</li>
+                <li>เข้าผ่าน LINE (สแกน QR) หรือเว็บก็ได้</li>
+                <li>ต้องใช้ง่าย ไม่ยุ่งยาก</li>
+            </ol>
+        </div>
+
+        <!-- หมวด 1 -->
+        <div class="section">
+            <div class="section-header">หมวด 1: การเข้าถึงและ Login</div>
+            <div class="section-body">
+                <div class="question">
+                    <div class="question-label">1.1</div>
+                    <div class="question-text">คนทั่วไปที่แค่อยาก "ดู" ว่าห้องปลอดฝุ่นอยู่ตรงไหน &rarr; ต้อง login ก่อนไหม? หรือเปิดดูได้เลยโดยไม่ต้อง login?</div>
+                </div>
+                <div class="question">
+                    <div class="question-label">1.2</div>
+                    <div class="question-text">ถ้าจะ "รีวิว / ถ่ายรูป / เพิ่มจุด" ต้อง login &rarr; ใช้ LINE Login อย่างเดียวพอไหม? หรือต้องมี email / เบอร์โทรด้วย?</div>
+                </div>
+                <div class="question">
+                    <div class="question-label">1.3</div>
+                    <div class="question-text">ร้านกาแฟ / สถานที่ที่อยากเพิ่มตัวเองเข้าระบบ &rarr; ใช้ login เดียวกับคนทั่วไปได้ไหม? หรือต้องแยก account ร้านค้า?</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- หมวด 2 -->
+        <div class="section">
+            <div class="section-header">หมวด 2: แผนที่และการค้นหา</div>
+            <div class="section-body">
+                <div class="question">
+                    <div class="question-label">2.1</div>
+                    <div class="question-text">เปิดมาครั้งแรก &rarr; แสดงแผนที่ตรงตำแหน่งปัจจุบันของผู้ใช้เลยไหม? (ขอ GPS)</div>
+                </div>
+                <div class="question">
+                    <div class="question-label">2.2</div>
+                    <div class="question-text">ค้นหาแบบไหนบ้าง?</div>
+                    <ol class="options" type="ก">
+                        <li>ค้นจากตำแหน่งปัจจุบัน (ใกล้ฉัน)</li>
+                        <li>ค้นจากชื่อจังหวัด / อำเภอ</li>
+                        <li>ค้นจากชื่อสถานที่ (เช่น "ร้านกาแฟ ABC")</li>
+                        <li>ค้นจากประเภท (ร้านกาแฟ, ห้างฯ, โรงเรียน, ฯลฯ)</li>
+                        <li>อื่นๆ</li>
+                    </ol>
+                </div>
+                <div class="question">
+                    <div class="question-label">2.3</div>
+                    <div class="question-text">ต้องแสดง "เส้นทาง" นำทางไปห้องปลอดฝุ่นไหม? (เชื่อม Google Maps)</div>
+                </div>
+                <div class="question">
+                    <div class="question-label">2.4</div>
+                    <div class="question-text">ต้องแสดงข้อมูลค่าฝุ่น PM2.5 ปัจจุบันในพื้นที่ด้วยไหม? (ดึงจาก DustBoy / Air4Thai)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- หมวด 3 -->
+        <div class="section">
+            <div class="section-header">หมวด 3: ข้อมูลห้องปลอดฝุ่น</div>
+            <div class="section-body">
+                <div class="question">
+                    <div class="question-label">3.1</div>
+                    <div class="question-text">แต่ละจุดบนแผนที่ ต้องแสดงข้อมูลอะไรบ้าง?</div>
+                    <ol class="options" type="ก">
+                        <li>ชื่อสถานที่</li>
+                        <li>ที่อยู่</li>
+                        <li>ประเภท (ร้านกาแฟ, อาคารราชการ, ฯลฯ)</li>
+                        <li>เวลาเปิด-ปิด</li>
+                        <li>รูปภาพ</li>
+                        <li>เบอร์โทร / ช่องทางติดต่อ</li>
+                        <li>ความจุ (รับได้กี่คน)</li>
+                        <li>สิ่งอำนวยความสะดวก (แอร์, เครื่องฟอกอากาศ, WiFi, ปลั๊กไฟ, น้ำดื่ม)</li>
+                        <li>ค่าใช้จ่าย (ฟรี / มีค่าใช้จ่าย)</li>
+                        <li>อื่นๆ</li>
+                    </ol>
+                </div>
+                <div class="question">
+                    <div class="question-label">3.2</div>
+                    <div class="question-text">ห้องปลอดฝุ่นจากกรมอนามัย กับ ห้องที่คนเพิ่มเอง &rarr; ต้องแยกให้เห็นชัดไหม? เช่น ติดป้าย "ผ่านการรับรอง" vs "ชุมชนแนะนำ"</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- หมวด 4 -->
+        <div class="section">
+            <div class="section-header">หมวด 4: การเพิ่มจุดใหม่ (ร้านกาแฟ / สถานที่)</div>
+            <div class="section-body">
+                <div class="question">
+                    <div class="question-label">4.1</div>
+                    <div class="question-text">ใครเพิ่มได้บ้าง?</div>
+                    <ol class="options" type="ก">
+                        <li>เจ้าของสถานที่เท่านั้น</li>
+                        <li>คนทั่วไปแนะนำสถานที่ที่เจอได้ด้วย</li>
+                    </ol>
+                </div>
+                <div class="question">
+                    <div class="question-label">4.2</div>
+                    <div class="question-text">ต้องมี admin อนุมัติก่อนขึ้นแผนที่ไหม? หรือขึ้นเลยแล้วค่อยตรวจทีหลัง?</div>
+                </div>
+                <div class="question">
+                    <div class="question-label">4.3</div>
+                    <div class="question-text">ฟอร์มเพิ่มจุด &rarr; กดปักหมุดบนแผนที่ได้เลย หรือพิมพ์ที่อยู่แล้วระบบหาพิกัดให้?</div>
+                </div>
+                <div class="question">
+                    <div class="question-label">4.4</div>
+                    <div class="question-text">ต้องแนบรูปถ่ายสถานที่ตอนเพิ่มไหม? (บังคับ หรือ optional)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- หมวด 5 -->
+        <div class="section">
+            <div class="section-header">หมวด 5: รีวิวและรูปภาพ</div>
+            <div class="section-body">
+                <div class="question">
+                    <div class="question-label">5.1</div>
+                    <div class="question-text">รีวิวเป็นแบบไหน?</div>
+                    <ol class="options" type="ก">
+                        <li>ให้ดาว (1-5 ดาว)</li>
+                        <li>เขียนข้อความ</li>
+                        <li>ถ่ายรูป</li>
+                        <li>ทั้งหมดรวมกัน</li>
+                    </ol>
+                </div>
+                <div class="question">
+                    <div class="question-label">5.2</div>
+                    <div class="question-text">ต้องมีระบบ report รีวิวไม่เหมาะสมไหม?</div>
+                </div>
+                <div class="question">
+                    <div class="question-label">5.3</div>
+                    <div class="question-text">เจ้าของสถานที่ตอบกลับรีวิวได้ไหม?</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- หมวด 6 -->
+        <div class="section">
+            <div class="section-header">หมวด 6: LINE Integration</div>
+            <div class="section-body">
+                <div class="question">
+                    <div class="question-label">6.1</div>
+                    <div class="question-text">LINE OA (Official Account) &rarr; ต้องมีไหม? เอาไว้ทำอะไร?</div>
+                    <ol class="options" type="ก">
+                        <li>แจ้งเตือนเมื่อค่าฝุ่นสูง "วันนี้ฝุ่นเยอะ หาห้องปลอดฝุ่นใกล้คุณ"</li>
+                        <li>แจ้งเตือนเมื่อมีห้องปลอดฝุ่นใหม่ในพื้นที่</li>
+                        <li>ส่งตำแหน่งใน LINE แล้วบอทตอบห้องปลอดฝุ่นใกล้เคียง</li>
+                        <li>แชร์ห้องปลอดฝุ่นให้เพื่อนผ่าน LINE ได้</li>
+                    </ol>
+                </div>
+                <div class="question">
+                    <div class="question-label">6.2</div>
+                    <div class="question-text">LIFF (เปิดเว็บใน LINE) &rarr; ใช้แบบนี้เป็นหลักไหม? คือคนกดเมนูใน LINE OA แล้วเปิดเว็บขึ้นมาเลย?</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- หมวด 7 -->
+        <div class="section">
+            <div class="section-header">หมวด 7: ขอบเขตและอนาคต</div>
+            <div class="section-body">
+                <div class="question">
+                    <div class="question-label">7.1</div>
+                    <div class="question-text">เริ่มเฉพาะเชียงใหม่ก่อน แล้วค่อยขยาย? หรือทั่วประเทศเลย?</div>
+                </div>
+                <div class="question">
+                    <div class="question-label">7.2</div>
+                    <div class="question-text">ภาษา &rarr; ไทยอย่างเดียว หรือต้องมีอังกฤษด้วย (สำหรับนักท่องเที่ยว)?</div>
+                </div>
+                <div class="question">
+                    <div class="question-label">7.3</div>
+                    <div class="question-text">มี admin dashboard สำหรับจัดการข้อมูลไหม? (อนุมัติจุดใหม่, ลบรีวิว, ดูสถิติ)</div>
+                </div>
+                <div class="question">
+                    <div class="question-label">7.4</div>
+                    <div class="question-text">ต้องการระบบ analytics ไหม? เช่น สถานที่ไหนคนเข้าดูเยอะ, จุดไหนถูกค้นหาบ่อย</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            สามารถเพิ่มเนื้อหาและรายละเอียดได้ถ้าต้องการ (ยิ่งละเอียดและเป็นรูปธรรมเท่าไรยิ่งดี)
+        </div>
+    </div>
+</body>
+
+</html>
